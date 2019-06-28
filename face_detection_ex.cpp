@@ -45,7 +45,6 @@
 #include "dlib/opencv.h"
 #include <iostream>
 #include <dirent.h>
-//#include <vector>
 #include <string>
 #include <opencv2/opencv.hpp>
 
@@ -56,12 +55,11 @@
 
 using namespace dlib;
 using namespace std;
-//using namespace cv;
 
 
 void get_image_names(std::string file_path, std::vector<std::string>& file_names)
 {
-	DIR *dir;
+    DIR *dir;
     struct dirent *ptr;
     dir = opendir(file_path.c_str());
     while( (ptr = readdir(dir)) != NULL)
@@ -129,11 +127,8 @@ int main(int argc, char** argv)
 
             // Now tell the face detector to give us a list of bounding boxes
             // around all the faces it can find in the image.
-            //Mat img;
             
-            
-            //cap >> img;
-            //img = cvtColor(img, COLOR_BGR2GRAY);
+                    
             std::vector<rectangle> dets = detector(dlibImgFrameGray);
 
             cout << "Number of faces detected: " << dets.size() << endl;
@@ -143,20 +138,17 @@ int main(int argc, char** argv)
             win.set_image(dlibImgFrameGray);
             win.add_overlay(dets, rgb_pixel(255,0,0));
             
-            if(count==500)
-            break;
 
-            //cout << "Hit enter to process the next image..." << endl;
-            //cin.get();
             cv::waitKey(10);
             t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
-			fps = 1.0 / t;
-			cout<<"Time consumed: "<< t << "s" << "   FPS: "<< fps<<endl;
-			count ++;
+	    fps = 1.0 / t;
+	    cout<<"Time consumed: "<< t << "s" << "   FPS: "<< fps<<endl;
+	    count ++;
         }
+	    
         s = ((double)cv::getTickCount() - s) / cv::getTickFrequency();
-			fps = 1.0 / s;
-			cout<< "Average FPS: " << (count+1)/s <<endl;
+	fps = 1.0 / s;
+	cout<< "Average FPS: " << (count+1)/s <<endl;
     }
     catch (exception& e)
     {
