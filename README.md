@@ -1,5 +1,5 @@
-# dlib-RealTime
-- This is a modified version of src file in https://github.com/OAID/Tengine/tree/master/examples/YuFaceDetectNet
+# dlib-Facedetection-RealTime
+- This is a modified version of src file in https://github.com/davisking/dlib/tree/master/examples
 in order to promote the performence and make video sequences and realtime camera accessible to this lib.
 
 - Dependency: Tengine, opencv
